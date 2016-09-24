@@ -9,7 +9,7 @@ class Settings:
     class __Settings:
 
         def __init__(self):
-            with open(os.getenv('ALEXA_PYTHON_TEMPLATE_YAML', '')) as yaml_file:
+            with open(os.getenv('MEMPHIS_YAML', '')) as yaml_file:
                 self.settings = yaml.load(yaml_file)
 
     def __init__(self):

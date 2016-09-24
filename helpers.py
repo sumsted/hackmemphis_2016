@@ -1,7 +1,9 @@
 from bottle import HTTPError, request
-import requests
+
 from schema import Debug
 from settings import Settings
+
+settings = Settings()
 
 UNKNOWN_INTENT_RESPONSE = {}
 
@@ -32,19 +34,19 @@ def authorized(handler):
     return decorator
 
 
-def ga_post_event(action=None, label=None, value=None):
-    try:
-        event = {
-            'v': settings.GA_VERSION,
-            'tid': settings.GA_TRACKING_CODE,
-            'cid': int(settings.GA_CID),
-            't': settings.GA_HIT_TYPE,
-            'ec': settings.GA_CATEGORY,
-            'ea': action if action is not None else settings.GA_ACTION,
-            'el': label if label is not None else settings.GA_LABEL,
-            'ev': value if value is not None else settings.GA_VALUE
-        }
-        result = requests.post(settings.GA_URL, data=event)
-    except:
-        result = None
-    return result
+# def ga_post_event(action=None, label=None, value=None):
+#     try:
+#         event = {
+#             'v': settings.GA_VERSION,
+#             'tid': settings.GA_TRACKING_CODE,
+#             'cid': int(settings.GA_CID),
+#             't': settings.GA_HIT_TYPE,
+#             'ec': settings.GA_CATEGORY,
+#             'ea': action if action is not None else settings.GA_ACTION,
+#             'el': label if label is not None else settings.GA_LABEL,
+#             'ev': value if value is not None else settings.GA_VALUE
+#         }
+#         result = requests.post(settings.GA_URL, data=event)
+#     except:
+#         result = None
+#     return result

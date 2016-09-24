@@ -45,53 +45,6 @@ class Authorizations(Base):
         self.user_name = user_name
 
 
-class Usage(Base):
-    __tablename__ = 'usage'
-    usage_id = Column(Integer(), primary_key=True)
-    token = Column(Text())
-    team_id = Column(Text(), index=True)
-    team_domain = Column(Text())
-    channel_id = Column(Text())
-    channel_name = Column(Text())
-    user_id = Column(Text())
-    user_name = Column(Text())
-    command = Column(Text())
-    text = Column(Text())
-    response_url = Column(Text())
-    created = Column(DateTime(), default=datetime.now, index=True)
-
-    def __init__(self, token=None, team_id=None, team_domain=None, channel_id=None, channel_name=None, user_id=None,
-                 user_name=None, command=None, text=None, response_url=None):
-        self.token = token
-        self.team_id = team_id
-        self.team_domain = team_domain
-        self.channel_id = channel_id
-        self.channel_name = channel_name
-        self.user_id = user_id
-        self.user_name = user_name
-        self.command = command
-        self.text = text
-        self.response_url = response_url
-
-
-class Tracks(Base):
-    __tablename__ = 'tracks'
-    track_id = Column(Integer(), primary_key=True)
-    tracking_number = Column(Text())
-    carrier = Column(Text(), index=True)
-    status = Column(Text())
-    created = Column(DateTime(), default=datetime.now, index=True)
-    user_id = Column(Text(), index=True)
-    updated = Column(DateTime())
-
-    def __init__(self, tracking_number=None, carrier=None, status=None, user_id=None, updated=None):
-        self.tracking_number = tracking_number
-        self.carrier = carrier
-        self.status = status
-        self.user_id = user_id
-        self.updated = updated
-
-
 class Debug(Base):
     __tablename__ = 'debug'
     debug_id = Column(Integer(), primary_key=True)

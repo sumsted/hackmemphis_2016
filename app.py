@@ -7,7 +7,7 @@ from db_setup import DbSetup
 from settings import Settings
 
 settings = Settings()
-TEMPLATE_PATH.insert(0, settings.TEMPLATE_FOLDER)
+TEMPLATE_PATH.insert(0, settings.MEMPHIS['TEMPLATE_FOLDER'])
 
 # database
 db_setup = DbSetup()
@@ -22,8 +22,8 @@ plugin = sqlalchemy.Plugin(engine,
 install(plugin)
 
 # routes are here and use default_app, to be after app and db setup
-import routes.web_handlers
-import routes.api_handlers
+import routes.web
+import routes.alexa_api
 
 if __name__ == '__main__':
-    run(host=settings.HOST, port=settings.PORT, debug=True)
+    run(host=settings.MEMPHIS['HOST'], port=settings.MEMPHIS['PORT'], debug=True)

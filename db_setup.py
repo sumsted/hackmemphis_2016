@@ -18,8 +18,7 @@ class DbSetup:
     def __init__(self):
         if DbSetup.instance is None:
             print('creating DbSetup instance')
-            settings.DB_PASSWORD = settings.get('DB_PASSWORD', '')
-            connection_string = 'postgresql://%(DB_USER)s:%(DB_PASSWORD)s@localhost:5432/%(DB_NAME)s' % settings.get_dict()
+            connection_string = 'postgresql://%(USERNAME)s:%(PASSWORD)s@localhost:5432/%(NAME)s' % settings.DB
             DbSetup.instance = DbSetup.__DbSetup(connection_string)
         else:
             print('reusing DbSetup instance')
