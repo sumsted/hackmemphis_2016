@@ -1,0 +1,12 @@
+helpIntent help
+quitIntent quit
+attackIntent Attack {monster} with {item}
+attackNoMonsterIntent Attack with {item}
+navigateIntent go {direction}
+navigateIntent walk {direction}
+lookIntent look around
+lookIntent where am I
+takeIntent take {item}
+healthIntent health
+restartIntent restart game
+

@@ -1,0 +1,37 @@
+direction
+
+north
+south
+east
+west
+up
+down
+
+
+items
+
+spoon
+sword
+chair
+thimble
+branch
+book
+marker
+teacher
+soda
+skittles
+pen
+table
+pizza
+unicorn
+chicken
+
+
+monsters
+
+Grover
+Elmo
+Cookie Monster
+Big Bird
+Potato Man
+Peanutbot
