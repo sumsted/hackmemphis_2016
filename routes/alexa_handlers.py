@@ -1,3 +1,9 @@
+from game.game import get_help
+from game.player import Player
+
+player = Player("Scott")
+
+
 def get_access_token(alexa_session):
     try:
         return alexa_session['user']['accessToken']
@@ -12,16 +18,16 @@ def get_slot(intent, key, default=None):
         return default
 
 
-def build_speechlet_response(title, output, reprompt_text, should_end_session):
+def build_speechlet_response(title, speech_output, reprompt_text, should_end_session, card_output=None):
     return {
         'outputSpeech': {
             'type': 'PlainText',
-            'text': output
+            'text': speech_output
         },
         'card': {
             'type': 'Simple',
             'title': title,
-            'content': output
+            'content': card_output or speech_output
         },
         'reprompt': {
             'outputSpeech': {
@@ -48,15 +54,16 @@ def handle_help_intent():
 
     session_attributes = {}
     card_title = "Welcome to Memphis"
-    speech_output = " Welcome to Memphis. Land of the chicken strip. Home of the Tigers."
 
     # If the user either does not reply to the welcome message or says something
     # that is not understood, they will be prompted again with this text.
-    reprompt_text = "Hey are you there? Memphis waits for no one."
+    reprompt_text = "Hey are you there? Memphis waits for no one. What would you like to do?"
+
+    help = get_help()
 
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
-        card_title, speech_output, reprompt_text, should_end_session))
+        card_title, help[0], reprompt_text, should_end_session, help[1]))
 
 
 def handle_session_end_request():

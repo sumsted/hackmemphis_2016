@@ -5,8 +5,9 @@ The game loop starts and only ends if the player chooses to quit.
 
 """
 import time
-from player import Player
-from gamemap import school_map
+
+from game.gamemap import school_map
+from game.player import Player
 
 
 def start():
@@ -42,7 +43,7 @@ def do_command(player):
     command = sentence.split(' ')[0]
     try:
         if command == 'help':
-            display_help()
+            get_help()
         elif command == 'quit':
             health(player)
             print('bye ', player.name)
@@ -71,12 +72,12 @@ def do_command(player):
             eat(player, item_name)
         else:
             print('\n%s\'s brain sez, "I don\'t understand - %s"\n' % (player.name, sentence))
-            display_help()
+            get_help()
 
     except Exception as e:
         print(str(e))
         print('\n%s\'s brain sez, "I don\'t understand - %s"\n' % (player.name, sentence))
-        display_help()
+        get_help()
     return True
 
 
@@ -95,11 +96,11 @@ def gary():
     print("\n\nGary! Gary!\npfpfpfpfppff    pfpfpfpfppff\nGary!\n(on radio) Guys, I can't find Gary.\n")
 
 
-def display_help():
+def get_help():
     """help
     Add commands to this or leave them off to make them secret.
     """
-    print("""
+    help = ("Welcome to Memphis. Land of the chicken strip. Home of the Tigers. See the help card for assistance.",""""
 
 Your commands are:
 
@@ -113,6 +114,7 @@ Your commands are:
   health               'health'               Displays your player current stats.
 
   """)
+    return help
 
 
 def attack(player, item_name):
@@ -277,7 +279,7 @@ def health(player):
     print(player.get_description())
 
 
-def eat1(player, item_name):
+def eat(player, item_name):
     """eat an item to add to player's health
     Some items may deduct health.
     """
