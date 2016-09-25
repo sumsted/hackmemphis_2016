@@ -50,6 +50,15 @@
       ]
     },
     {
+      "intent": "eatIntent",
+      "slots": [
+        {
+          "name": "item",
+          "type": "LIST_OF_ITEMS"
+        }
+      ]
+    },
+    {
       "intent": "healthIntent"
     },
     {
