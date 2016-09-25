@@ -255,6 +255,7 @@ def take(player, item_name):
     """take item
     Make sure the item is in the room. If it is add to the player items and remove it from the room.
     """
+    take_progress = ""
     found = False
     player_room = school_map[player.location[0]][player.location[1]]
     for index, item in enumerate(player_room.items):
@@ -264,16 +265,17 @@ def take(player, item_name):
             found = True
             break
     if found:
-        print('\nThe ' + item_name + ' is yours.')
-    if not found:
-        print('\nThere is no ' + item_name + ' in ' + player_room.name + '.')
+        take_progress += "The %s is yours." % item_name
+    else:
+        take_progress += "There is no %s in %s."%(item_name, player_room.name)
+    return take_progress
 
 
 def health(player):
     """health
     Show the players name, health and items.
     """
-    print(player.get_description())
+    return player.get_description()
 
 
 def eat(player, item_name):
@@ -286,19 +288,20 @@ def eat(player, item_name):
     # if found then add item['health'] to player.health and
     # print some clever message and finally
     # break to end call
-
+    eat_progress = ""
     for index, item in enumerate(player.items):
         if item_name == item['name']:
             player.health = player.health + item['health']
             del player.items[index]
             if 0 < item['health'] < 5:
-                print('A %s does not taste good.\n' % item['name'])
+                eat_progress += 'A %s does not taste good.\n' % item['name']
             elif item['health'] <= 0:
-                print('A %s hurts you.\n' % item['name'])
+                eat_progress += 'A %s hurts you.\n' % item['name']
             else:
-                print('A %s helps.\n' % item['name'])
+                eat_progress += 'A %s helps.\n' % item['name']
             health(player)
             break
+    return eat_progress
 
 
 # this module is only named __main__ if called using python schooladventure.py

@@ -1,4 +1,4 @@
-from game.game import get_help, gary, dude, attack, go, look_around
+from game.game import get_help, gary, dude, attack, go, look_around, take, health, eat
 from game.player import Player
 from logit import logit
 
@@ -48,7 +48,7 @@ def build_response(session_attributes, speechlet_response):
     }
 
 
-def handle_gary():
+def handle_gary_intent():
     session_attributes = {}
     card_title = "Gary?"
 
@@ -59,7 +59,7 @@ def handle_gary():
         card_title, speech_output, None, should_end_session))
 
 
-def handle_dude():
+def handle_dude_intent():
     session_attributes = {}
     card_title = "I'm the dude!"
 
@@ -150,7 +150,8 @@ def handle_take_intent(intent, session):
     speech_output = "I'm taking stuff."
     reprompt_text = None
     try:
-        pass
+        item_name = get_slot(intent, 'item', '')
+        speech_output = take(player, item_name)
     except Exception as e:
         logit(str(e), 'ERROR')
     return build_response(session_attributes, build_speechlet_response(
@@ -164,7 +165,22 @@ def handle_health_intent(intent, session):
     speech_output = "I'm healthy."
     reprompt_text = None
     try:
-        pass
+        speech_output = health(player)
+    except Exception as e:
+        logit(str(e), 'ERROR')
+    return build_response(session_attributes, build_speechlet_response(
+        title, speech_output, reprompt_text, should_end_session))
+
+
+def handle_eat_intent(intent, session):
+    title = "Memphis - EAT!"
+    should_end_session = False
+    session_attributes = {}
+    speech_output = "I'm eating."
+    reprompt_text = None
+    try:
+        item_name = get_slot(intent, 'item', '')
+        speech_output = eat(player, item_name)
     except Exception as e:
         logit(str(e), 'ERROR')
     return build_response(session_attributes, build_speechlet_response(

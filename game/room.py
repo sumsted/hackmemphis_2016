@@ -23,7 +23,7 @@ class Room():
     def get_description(self):
         description = "\nYou are in the %s.\n" % self.name
         if len(self.items) > 0:
-            description += "\nThere's some junk in here. It looks like a..."
+            description += "\nThere's some junk in here. It looks like "
             for index, item in enumerate(self.items):
                 if index > 0:
                     description += "  and a %s" % item['name']
@@ -36,3 +36,6 @@ class Room():
             else:
                 description += "\nThere's a dead %s laying on the floor.\n" % self.monster['name']
         return description
+
+    def add_thimble(self):
+        self.items.append({'name': 'thimble', 'attack': 1, 'health': 0})

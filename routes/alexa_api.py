@@ -2,7 +2,8 @@ from bottle import request, post
 
 from logit import logit
 from routes.alexa_handlers import handle_help_intent, handle_session_end_request, handle_attack_intent, \
-    handle_navigate_intent, handle_look_intent, handle_take_intent, handle_health_intent
+    handle_navigate_intent, handle_look_intent, handle_take_intent, handle_health_intent, handle_gary_intent, \
+    handle_dude_intent, handle_eat_intent
 
 
 @post('/alexa/event')
@@ -47,8 +48,14 @@ def route_intent(alexa_request, alexa_session):
         return handle_look_intent(intent, alexa_session)
     elif intent_name in ["takeIntent"]:
         return handle_take_intent(intent, alexa_session)
+    elif intent_name in ["eatIntent"]:
+        return handle_eat_intent(intent, alexa_session)
     elif intent_name in ["healthIntent"]:
         return handle_health_intent(intent, alexa_session)
+    elif intent_name in ["garyIntent"]:
+        return handle_gary_intent(intent, alexa_session)
+    elif intent_name in ["dudeIntent"]:
+        return handle_dude_intent(intent, alexa_session)
     elif intent_name in ["AMAZON.HelpIntent", "helpIntent"]:
         return handle_help_intent()
     elif intent_name in ["AMAZON.CancelIntent", "AMAZON.StopIntent", 'quitIntent']:

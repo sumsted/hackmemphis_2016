@@ -9,4 +9,5 @@ lookIntent where am I
 takeIntent take {item}
 healthIntent health
 restartIntent restart game
-
+garyIntent is gary there?
+dudeIntent what kind of dude are you?

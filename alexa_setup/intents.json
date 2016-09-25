@@ -54,6 +54,12 @@
     },
     {
       "intent": "restartIntent"
+    },
+    {
+      "intent": "garyIntent"
+    },
+    {
+      "intent": "dudeIntent"
     }
   ]
 }
