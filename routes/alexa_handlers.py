@@ -2,7 +2,7 @@ from game.game import get_help, gary, dude, attack, go, look_around, take, healt
 from game.player import Player
 from logit import logit
 
-player = Player("Scott")
+player = Player("Nicholas")
 
 
 def get_access_token(alexa_session):
@@ -224,6 +224,7 @@ def handle_play_intent(intent, session):
     reprompt_text = None
     try:
         speech_output += look_around(player)
+        speech_output += health(player)
     except Exception as e:
         logit(str(e), 'ERROR')
     return build_response(session_attributes, build_speechlet_response(

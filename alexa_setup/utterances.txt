@@ -12,6 +12,7 @@ lookIntent look around
 lookIntent where am I
 takeIntent take {item}
 eatIntent eat {item}
+healthIntent what am i carrying
 healthIntent health
 restartIntent restart game
 garyIntent is gary there
