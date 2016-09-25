@@ -101,7 +101,7 @@ def get_help():
     """help
     Add commands to this or leave them off to make them secret.
     """
-    return ("Welcome to Memphis. Land of the chicken strip. Home of the Tigers. See the help card for assistance.", """"
+    return ("Welcome to Memphis. Home of the Tigers. Land of the chicken strip. See the help card for assistance.", """"
 
 Your commands are:
 

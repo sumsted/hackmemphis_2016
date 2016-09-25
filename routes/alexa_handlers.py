@@ -220,7 +220,7 @@ def handle_play_intent(intent, session):
     title = "Memphis - Welcome!"
     should_end_session = False
     session_attributes = {}
-    speech_output = "Welcome to Memphis. "
+    speech_output = "Welcome to Memphis. Home of the Tigers. "
     reprompt_text = None
     try:
         speech_output += look_around(player)
