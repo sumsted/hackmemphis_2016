@@ -8,6 +8,7 @@ import time
 
 from game.gamemap import school_map
 from game.player import Player
+from logit import logit
 
 
 def start():
@@ -198,7 +199,8 @@ def go(player, direction):
             player.location[1] = y
 
         go_progress += look_around(player)
-    except:
+    except Exception as e:
+        logit(str(e),'ERROR')
         player.location[0] = save_x
         player.location[1] = save_y
         go_progress = 'I think you just tried to jump into the abyss.'
@@ -240,7 +242,7 @@ def look_around(player):
     """look around
     List the current room description and list the names of all the rooms around the player.
     """
-    my_space = "%s To the North is %. The East is %s. To the South is %s. To the West is %s."
+    my_space = "%s To the North is %s. The East is %s. To the South is %s. To the West is %s."
     return my_space % (
         school_map[player.location[0]][player.location[1]].get_description(),
         look_direction(player.location, 'north'),
