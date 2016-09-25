@@ -8,7 +8,7 @@ Monster count is fixed to either 1 or 0.
 
 """
 import random
-from items_monsters import MONSTERS, ITEMS
+from game.items_monsters import MONSTERS, ITEMS
 
 
 class Room():

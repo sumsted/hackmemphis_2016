@@ -8,7 +8,7 @@ Each room has a name and may have items and a monster when built.
 
 school_map is built using build_map() when this module is imported into schooladventure.
 """
-from room import Room
+from game.room import Room
 
 
 school_map = []
