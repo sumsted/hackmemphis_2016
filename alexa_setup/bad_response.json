@@ -1,0 +1,39 @@
+{
+  "session": {
+    "new": false,
+    "user": {
+      "userId": "amzn1.ask.account.AF44WFLIHPANXUFSPQYFYUEHONY6FA4CDSSGGFLPXKP7UDJET7SLKEKOHPT5NWLENC5QXDMO4YMQA2EJAU2N7SBCIIQMML7UILSS37LN6PUXV2HHDDEDC2XV7GZV4VKHCBPWA7LNJYSKZFAVRVO7JWG65STNRBDJ57SKSTPRG7MWF2MFWQJTZ3QV7MHZ6KCIZMFEUP2WDQW2UVY"
+    },
+    "sessionId": "amzn1.echo-api.session.15cd3e15-b83e-454e-a235-527752b7ed49",
+    "application": {
+      "applicationId": "amzn1.ask.skill.133c65b2-e446-44fe-9a6e-a2b4457cee12"
+    }
+  },
+  "request": {
+    "reason": "ERROR",
+    "locale": "en-US",
+    "requestId": "amzn1.echo-api.request.78dfbc17-bca8-453d-bbbd-f7d31af1d932",
+    "timestamp": "2016-09-25T12:23:22Z",
+    "type": "SessionEndedRequest",
+    "error": {
+      "type": "INVALID_RESPONSE",
+      "message": "An exception occurred while dispatching the request to the skill."
+    }
+  },
+  "version": "1.0",
+  "context": {
+    "System": {
+      "application": {
+        "applicationId": "amzn1.ask.skill.133c65b2-e446-44fe-9a6e-a2b4457cee12"
+      },
+      "device": {
+        "supportedInterfaces": {
+          "AudioPlayer": {}
+        }
+      },
+      "user": {
+        "userId": "amzn1.ask.account.AF44WFLIHPANXUFSPQYFYUEHONY6FA4CDSSGGFLPXKP7UDJET7SLKEKOHPT5NWLENC5QXDMO4YMQA2EJAU2N7SBCIIQMML7UILSS37LN6PUXV2HHDDEDC2XV7GZV4VKHCBPWA7LNJYSKZFAVRVO7JWG65STNRBDJ57SKSTPRG7MWF2MFWQJTZ3QV7MHZ6KCIZMFEUP2WDQW2UVY"
+      }
+    }
+  }
+}

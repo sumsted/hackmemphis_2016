@@ -3,7 +3,7 @@ from bottle import request, post
 from logit import logit
 from routes.alexa_handlers import handle_help_intent, handle_session_end_request, handle_attack_intent, \
     handle_navigate_intent, handle_look_intent, handle_take_intent, handle_health_intent, handle_gary_intent, \
-    handle_dude_intent, handle_eat_intent, handle_look_direction_intent
+    handle_dude_intent, handle_eat_intent, handle_look_direction_intent, handle_play_intent
 
 
 @post('/alexa/event')
