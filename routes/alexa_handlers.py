@@ -214,3 +214,17 @@ def handle_restart_intent(intent, session):
         logit(str(e), 'ERROR')
     return build_response(session_attributes, build_speechlet_response(
         title, speech_output, reprompt_text, should_end_session))
+
+
+def handle_play_intent(intent, session):
+    title = "Memphis - Welcome!"
+    should_end_session = False
+    session_attributes = {}
+    speech_output = "Welcome to Memphis. "
+    reprompt_text = None
+    try:
+        speech_output += look_around(player)
+    except Exception as e:
+        logit(str(e), 'ERROR')
+    return build_response(session_attributes, build_speechlet_response(
+        title, speech_output, reprompt_text, should_end_session))

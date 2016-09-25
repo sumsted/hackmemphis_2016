@@ -21,11 +21,11 @@ a school you wish you went to. You could even add rooms that have nothing to do 
 ROOMS is a List of Lists of Strings
 """
 ROOMS = [
-    ['Library',    'Cafeteria', 'Gym', 'English', 'Algebra'],
-    ['Stem Lab',   'Kitchen', 'Closet', 'Principal\'s Office', 'Study Hall'],
-    ['Auditorium', 'Spanish', 'Art', 'Attendance Office', 'Shop'],
-    ['French',     'Chemistry', 'Physics', 'Biology', 'Health'],
-    ['PE Gym',     'Closet', 'Annex', 'Economics', 'Detention']
+    ['Business Building',    'Parking Garage', 'Gate', 'Museum', 'Engineering'],
+    ['FedEx Institute',   'Art Building', 'Math Building', 'Library', 'Field'],
+    ['Dorm', 'Stadium', 'Center of Campus', 'Administration', 'Field House'],
+    ['Geology',     'History', 'Mall', 'University Center', 'Parking Garage'],
+    ['English Building',     'Criminal Justice', 'Mall', 'Chemistry Building', 'Education Building']
 ]
 
 

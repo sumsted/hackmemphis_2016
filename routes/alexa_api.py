@@ -42,6 +42,8 @@ def route_intent(alexa_request, alexa_session):
 
     if intent_name in ["attackIntent", "attackNoMonsterIntent"]:
         return handle_attack_intent(intent, alexa_session)
+    elif intent_name in ["playIntent"]:
+        return handle_play_intent(intent, alexa_session)
     elif intent_name in ["navigateIntent"]:
         return handle_navigate_intent(intent, alexa_session)
     elif intent_name in ["lookDirectionIntent"]:

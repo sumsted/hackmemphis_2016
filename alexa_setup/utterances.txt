@@ -1,11 +1,13 @@
 helpIntent help
 quitIntent quit
+playIntent play game
 attackIntent Attack {monster} with {item}
 attackIntent Hit {monster} with {item}
 attackIntent Throw {item} at {monster}
 attackNoMonsterIntent Attack with {item}
 navigateIntent go {direction}
 navigateIntent walk {direction}
+navigateIntent jump {direction}
 lookIntent look around
 lookIntent where am I
 takeIntent take {item}

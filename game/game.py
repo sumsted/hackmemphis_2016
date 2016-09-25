@@ -101,7 +101,7 @@ def get_help():
     """help
     Add commands to this or leave them off to make them secret.
     """
-    return ("Welcome to Memphis. Land of the chicken strip. Home of the Tigers. See the help card for assistance.",""""
+    return ("Welcome to Memphis. Land of the chicken strip. Home of the Tigers. See the help card for assistance.", """"
 
 Your commands are:
 
@@ -141,9 +141,9 @@ def attack(player, item_name):
             attack_progress += "%s shall feel the wrath of your %s.  " % (
                 player_room.monster['name'], item['name'])
             if item['attack'] < 5:
-                attack_progress += "You know, %s is not a very effective weapon." % item['name']
+                attack_progress += "You know, %s is not a very effective weapon. " % item['name']
 
-            attack_progress += 'ATTACKING %s WITH YOUR %s!' % (player_room.monster['name'], item['name'])
+            attack_progress += 'ATTACKING %s WITH YOUR %s! ' % (player_room.monster['name'], item['name'])
 
             player_room.monster['health'] -= item['attack']
 
@@ -152,13 +152,14 @@ def attack(player, item_name):
 
             if player_room.monster['health'] > 0:
                 attack_progress += "%s's health is now %d." % (player_room.monster['name'],
-                                                    player_room.monster['health'])
-                attack_progress += "\n%s counter attacks NOW!\n" % player_room.monster['name']
+                                                               player_room.monster['health'])
+                attack_progress += "\n%s counter attacks NOW!\n " % player_room.monster['name']
 
                 attack_progress += 'ATTACKING!'
 
                 player.health -= player_room.monster['attack']
-                attack_progress += "You lose %d health points. Your health is now %d." % (player_room.monster['attack'], player.health)
+                attack_progress += "You lose %d health points. Your health is now %d." % (
+                player_room.monster['attack'], player.health)
                 if player.health < 1:
                     player.name = 'Zombie ' + player.name
                     attack_progress += "%s, you are now a zombie!" % player.name
@@ -169,7 +170,7 @@ def attack(player, item_name):
             attack_status = "Attack complete."
             break
 
-    return attack_progress+" " +attack_status
+    return attack_progress + " " + attack_status
 
 
 def go(player, direction):
@@ -193,14 +194,14 @@ def go(player, direction):
             go_progress += 'Try north, south, east, or west. '
 
         if x >= len(school_map) or x < 0 or y >= len(school_map[x]) or y < 0:
-            go_progress += '%s\'s brain sez, "Huh I can\'t let you go there. That\'s the abyss." ' % player.name
+            go_progress += '%s\'s brain sez, "Huh, I can\'t let you go there. That\'s the abyss." ' % player.name
         else:
             player.location[0] = x
             player.location[1] = y
 
         go_progress += look_around(player)
     except Exception as e:
-        logit(str(e),'ERROR')
+        logit(str(e), 'ERROR')
         player.location[0] = save_x
         player.location[1] = save_y
         go_progress = 'I think you just tried to jump into the abyss.'
@@ -235,7 +236,7 @@ def look_direction(location, direction):
     except:
         room = 'the abyss'
 
-    return "To the %s is %s."%(direction,room)
+    return "To the %s is %s." % (direction, room)
 
 
 def look_around(player):
@@ -267,7 +268,7 @@ def take(player, item_name):
     if found:
         take_progress += "The %s is yours." % item_name
     else:
-        take_progress += "There is no %s in %s."%(item_name, player_room.name)
+        take_progress += "There is no %s in %s." % (item_name, player_room.name)
     return take_progress
 
 
@@ -299,7 +300,7 @@ def eat(player, item_name):
                 eat_progress += 'A %s hurts you.\n' % item['name']
             else:
                 eat_progress += 'A %s helps.\n' % item['name']
-            health(player)
+            eat_progress += health(player)
             break
     return eat_progress
 
