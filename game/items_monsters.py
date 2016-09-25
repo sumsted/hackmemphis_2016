@@ -35,6 +35,7 @@ OLD_ITEMS = [
 
 
 ITEMS = [
+    {'name': 'spoon', 'attack': 1, 'health': -1},
     {'name': 'sword', 'attack': 30, 'health': -1},
     {'name': 'Kansas Big Jay', 'attack': 10, 'health': 4},
     {'name': 'South East Missouri Otahkian', 'attack': 8, 'health': 2},
