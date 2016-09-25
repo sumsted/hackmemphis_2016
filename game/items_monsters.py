@@ -50,6 +50,7 @@ ITEMS = [
     {'name': 'Shasta', 'attack': 30, 'health': 1},
     {'name': 'pizza', 'attack': 2, 'health': 30},
     {'name': 'noodles', 'attack': 2, 'health': 10},
+    {'name': 'Red bull', 'attack': 5, 'health': 30},
     {'name': 'skittles', 'attack': 2, 'health': 10},
     {'name': 'unicorn', 'attack': 20, 'health': 30},
     {'name': 'chicken', 'attack': 0, 'health': 10},
