@@ -29,7 +29,7 @@ class Room():
                     description += "  and a %s" % item['name']
                 else:
                     description += "  a %s" % item['name']
-            description += "\n"
+            description += ". \n"
         if self.monster is not None:
             if self.monster['health'] > 0:
                 description += "\nThere's a %s in here that looks angry.\n" % self.monster['name']
