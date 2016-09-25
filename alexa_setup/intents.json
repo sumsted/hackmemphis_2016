@@ -38,6 +38,15 @@
       ]
     },
     {
+      "intent": "lookDirectionIntent",
+      "slots": [
+        {
+          "name": "direction",
+          "type": "LIST_OF_DIRECTIONS"
+        }
+      ]
+    },
+    {
       "intent": "lookIntent"
     },
     {

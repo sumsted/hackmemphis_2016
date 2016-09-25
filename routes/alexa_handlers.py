@@ -1,4 +1,4 @@
-from game.game import get_help, gary, dude, attack, go, look_around, take, health, eat
+from game.game import get_help, gary, dude, attack, go, look_around, take, health, eat, look_direction
 from game.player import Player
 from logit import logit
 
@@ -123,6 +123,21 @@ def handle_navigate_intent(intent, session):
     try:
         direction = get_slot(intent, 'direction', '')
         speech_output = go(player, direction)
+    except Exception as e:
+        logit(str(e), 'ERROR')
+    return build_response(session_attributes, build_speechlet_response(
+        title, speech_output, reprompt_text, should_end_session))
+
+
+def handle_look_direction_intent(intent, session):
+    title = "Memphis - LOOKING!"
+    should_end_session = False
+    session_attributes = {}
+    speech_output = "I'm looking."
+    reprompt_text = None
+    try:
+        direction = get_slot(intent, 'direction', '')
+        speech_output = look_direction(player.location, direction)
     except Exception as e:
         logit(str(e), 'ERROR')
     return build_response(session_attributes, build_speechlet_response(

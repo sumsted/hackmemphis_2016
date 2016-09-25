@@ -235,14 +235,14 @@ def look_direction(location, direction):
     except:
         room = 'the abyss'
 
-    return room
+    return "To the %s is %s."%(direction,room)
 
 
 def look_around(player):
     """look around
     List the current room description and list the names of all the rooms around the player.
     """
-    my_space = "%s To the North is %s. The East is %s. To the South is %s. To the West is %s."
+    my_space = "%s %s %s %s %s"
     return my_space % (
         school_map[player.location[0]][player.location[1]].get_description(),
         look_direction(player.location, 'north'),
