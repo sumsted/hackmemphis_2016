@@ -44,20 +44,20 @@ Herry the Monster
 new items
 spoon
 sword
-Jay Hawk
-Bandit
-Rebel
-Owl
-Green Wave
-Mid ship man
-Captain Cane
-Mustang
-Rocky the Bull
-Bear Cat
-Shasta
-Pizza
+jay hawk
+bandit
+rebel
+owl
+green wave
+mid ship man
+captain cane
+mustang
+rocky the bull
+bear cat
+shasta
+pizza
 noodles
-Red bull
+red bull
 skittles
 unicorn
 chicken
