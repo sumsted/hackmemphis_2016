@@ -86,21 +86,21 @@ def dude():
     You can add your own funny commands.
     Just create a function and call it from the do_command() if statement
     """
-    print("\n\nI know what dude I am!\nI'm the dude, playing a dude,\ndisguised as another dude!\n")
+    return "I know what dude I am! I'm the dude, playing a dude, disguised as another dude!"
 
 
 def gary():
     """gary
     Another funny command.
     """
-    print("\n\nGary! Gary!\npfpfpfpfppff    pfpfpfpfppff\nGary!\n(on radio) Guys, I can't find Gary.\n")
+    return "Gary? Gary? pfpfpfpfppff    pfpfpfpfppff Gary? Guys, I can't find Gary."
 
 
 def get_help():
     """help
     Add commands to this or leave them off to make them secret.
     """
-    help = ("Welcome to Memphis. Land of the chicken strip. Home of the Tigers. See the help card for assistance.",""""
+    return ("Welcome to Memphis. Land of the chicken strip. Home of the Tigers. See the help card for assistance.",""""
 
 Your commands are:
 
@@ -114,7 +114,6 @@ Your commands are:
   health               'health'               Displays your player current stats.
 
   """)
-    return help
 
 
 def attack(player, item_name):
@@ -131,21 +130,19 @@ def attack(player, item_name):
       so player.points += item['attack']
       see player module for other changes needed
     """
-    attack_status = "\nThere was no attack. Either you don\'t have a %s or there is no monster." % item_name
-
+    attack_status = "There was no attack. Either you don\'t have a %s or there is no monster." % item_name
+    attack_progress = ""
     player_room = school_map[player.location[0]][player.location[1]]
 
     for index, item in enumerate(player.items):
         if item_name == item['name'] and (school_map[player.location[0]][player.location[1]].monster['health'] > 0 or
                                                   item['attack'] < 0):
-            print("\n%s shall feel the wrath of your %s.\n" % (
-                player_room.monster['name'], item['name']))
+            attack_progress += "%s shall feel the wrath of your %s.  " % (
+                player_room.monster['name'], item['name'])
             if item['attack'] < 5:
-                print("\nYou know, %s is not a very effective weapon.\n" % item['name'])
+                attack_progress += "You know, %s is not a very effective weapon." % item['name']
 
-            for i in range(3):
-                print('ATTACKING %s WITH YOUR %s!' % (player_room.monster['name'], item['name']))
-                time.sleep(.5)
+            attack_progress += 'ATTACKING %s WITH YOUR %s!' % (player_room.monster['name'], item['name'])
 
             player_room.monster['health'] -= item['attack']
 
@@ -153,29 +150,25 @@ def attack(player, item_name):
             player.points += item['attack']
 
             if player_room.monster['health'] > 0:
-                print("\n%s's health is now %d." % (player_room.monster['name'],
-                                                    player_room.monster['health']))
-                print("\n%s counter attacks NOW!\n" % player_room.monster['name'])
+                attack_progress = "%s's health is now %d." % (player_room.monster['name'],
+                                                    player_room.monster['health'])
+                attack_progress += "\n%s counter attacks NOW!\n" % player_room.monster['name']
 
-                for i in range(3):
-                    print('ATTACKING!')
-                    time.sleep(.5)
+                attack_progress += 'ATTACKING!'
 
                 player.health -= player_room.monster['attack']
-                print("\nYou lose %d health points. Your health is now %d." %
-                      (player_room.monster['attack'], player.health))
+                attack_progress += "You lose %d health points. Your health is now %d." % (player_room.monster['attack'], player.health)
                 if player.health < 1:
                     player.name = 'Zombie ' + player.name
-                    print("\n%s, you are now a zombie!" % player.name)
+                    attack_progress += "%s, you are now a zombie!" % player.name
                 if player.health <= 10:
-                    print("\n%s, your health is quite low!" % player.name)
+                    attack_progress += "%s, your health is quite low!" % player.name
             else:
-                print("\n%s is now dead. Long live %s!" %
-                      (player_room.monster['name'], player.name))
-            attack_status = "\nAttack complete."
+                attack_progress += "\n%s is now dead. Long live %s!" % (player_room.monster['name'], player.name)
+            attack_status = "Attack complete."
             break
 
-    print(attack_status)
+    return attack_progress+" " +attack_status
 
 
 def go(player, direction):
@@ -183,6 +176,7 @@ def go(player, direction):
     Player can travel north, south, east or west.
     Player may not go off the map...abyss.
     """
+    go_progress = ""
     x, y = player.location
     save_x, save_y = player.location
     try:
@@ -195,26 +189,27 @@ def go(player, direction):
         elif direction == 'west':
             y -= 1
         else:
-            print('\nTry north, south, east, or west.')
+            go_progress += 'Try north, south, east, or west. '
 
         if x >= len(school_map) or x < 0 or y >= len(school_map[x]) or y < 0:
-            print('\n%s\'s brain sez, "Huh I can\'t let you go there. That\'s the abyss."' % player.name)
+            go_progress += '%s\'s brain sez, "Huh I can\'t let you go there. That\'s the abyss." ' % player.name
         else:
             player.location[0] = x
             player.location[1] = y
 
-        look_around(player)
+        go_progress += look_around(player)
     except:
         player.location[0] = save_x
         player.location[1] = save_y
-        print('\nI think you just tried to jump into the abyss.')
+        go_progress = 'I think you just tried to jump into the abyss.'
+    return go_progress
 
 
 def where_am_i(player):
     """where am i
     List the details of the current room.
     """
-    print(school_map[player.location[0]][player.location[1]].get_description())
+    return school_map[player.location[0]][player.location[1]].get_description()
 
 
 def look_direction(location, direction):
@@ -245,13 +240,13 @@ def look_around(player):
     """look around
     List the current room description and list the names of all the rooms around the player.
     """
-    print(school_map[player.location[0]][player.location[1]].get_description())
-    print("               NORTH")
-    print("               %s\n" % look_direction(player.location, 'north'))
-    print("WEST   %s            %s   EAST\n" % (
-        look_direction(player.location, 'west'), look_direction(player.location, 'east')))
-    print("               %s" % look_direction(player.location, 'south'))
-    print("               SOUTH")
+    my_space = "%s To the North is %. The East is %s. To the South is %s. To the West is %s."
+    return my_space % (
+        school_map[player.location[0]][player.location[1]].get_description(),
+        look_direction(player.location, 'north'),
+        look_direction(player.location, 'east'),
+        look_direction(player.location, 'south'),
+        look_direction(player.location, 'west'))
 
 
 def take(player, item_name):

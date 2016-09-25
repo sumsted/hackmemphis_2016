@@ -1,4 +1,4 @@
-from game.game import get_help
+from game.game import get_help, gary, dude, attack, go, look_around
 from game.player import Player
 
 player = Player("Scott")
@@ -47,6 +47,28 @@ def build_response(session_attributes, speechlet_response):
     }
 
 
+def handle_gary():
+    session_attributes = {}
+    card_title = "Gary?"
+
+    speech_output = gary()
+
+    should_end_session = False
+    return build_response(session_attributes, build_speechlet_response(
+        card_title, speech_output, None, should_end_session))
+
+
+def handle_dude():
+    session_attributes = {}
+    card_title = "I'm the dude!"
+
+    speech_output = dude()
+
+    should_end_session = False
+    return build_response(session_attributes, build_speechlet_response(
+        card_title, speech_output, None, should_end_session))
+
+
 def handle_help_intent():
     """ If we wanted to initialize the session to have some attributes we could
     add those here
@@ -83,7 +105,8 @@ def handle_attack_intent(intent, session):
     speech_output = "I'm attacking."
     reprompt_text = None
     try:
-        pass
+        item_name = get_slot(intent, 'item', '')
+        speech_output = attack(player, item_name)
     except:
         pass
     return build_response(session_attributes, build_speechlet_response(
@@ -97,7 +120,8 @@ def handle_navigate_intent(intent, session):
     speech_output = "I'm running."
     reprompt_text = None
     try:
-        pass
+        direction = get_slot(intent, 'direction', '')
+        speech_output = go(player, direction)
     except:
         pass
     return build_response(session_attributes, build_speechlet_response(
@@ -111,7 +135,7 @@ def handle_look_intent(intent, session):
     speech_output = "I'm looking around."
     reprompt_text = None
     try:
-        pass
+        speech_output = look_around(player)
     except:
         pass
     return build_response(session_attributes, build_speechlet_response(
