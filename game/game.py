@@ -151,7 +151,7 @@ def attack(player, item_name):
             player.points += item['attack']
 
             if player_room.monster['health'] > 0:
-                attack_progress = "%s's health is now %d." % (player_room.monster['name'],
+                attack_progress += "%s's health is now %d." % (player_room.monster['name'],
                                                     player_room.monster['health'])
                 attack_progress += "\n%s counter attacks NOW!\n" % player_room.monster['name']
 

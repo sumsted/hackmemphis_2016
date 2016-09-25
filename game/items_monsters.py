@@ -16,7 +16,7 @@ MONSTERS - list of dictionaries containing
 STARTING_ITEM = 0
 
 ITEMS = [
-    {'name': 'spoon', 'attack': -5, 'health': -1},
+    {'name': 'spoon', 'attack': 1, 'health': -1},
     {'name': 'sword', 'attack': 8, 'health': -100},
     {'name': 'chair', 'attack': 5, 'health': 1},
     {'name': 'thimble', 'attack': 1, 'health': 0},

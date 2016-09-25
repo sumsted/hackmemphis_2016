@@ -1,5 +1,6 @@
 from game.game import get_help, gary, dude, attack, go, look_around
 from game.player import Player
+from logit import logit
 
 player = Player("Scott")
 
@@ -107,8 +108,8 @@ def handle_attack_intent(intent, session):
     try:
         item_name = get_slot(intent, 'item', '')
         speech_output = attack(player, item_name)
-    except:
-        pass
+    except Exception as e:
+        logit(str(e), 'ERROR')
     return build_response(session_attributes, build_speechlet_response(
         title, speech_output, reprompt_text, should_end_session))
 
@@ -122,8 +123,8 @@ def handle_navigate_intent(intent, session):
     try:
         direction = get_slot(intent, 'direction', '')
         speech_output = go(player, direction)
-    except:
-        pass
+    except Exception as e:
+        logit(str(e), 'ERROR')
     return build_response(session_attributes, build_speechlet_response(
         title, speech_output, reprompt_text, should_end_session))
 
@@ -136,8 +137,8 @@ def handle_look_intent(intent, session):
     reprompt_text = None
     try:
         speech_output = look_around(player)
-    except:
-        pass
+    except Exception as e:
+        logit(str(e), 'ERROR')
     return build_response(session_attributes, build_speechlet_response(
         title, speech_output, reprompt_text, should_end_session))
 
@@ -150,8 +151,8 @@ def handle_take_intent(intent, session):
     reprompt_text = None
     try:
         pass
-    except:
-        pass
+    except Exception as e:
+        logit(str(e), 'ERROR')
     return build_response(session_attributes, build_speechlet_response(
         title, speech_output, reprompt_text, should_end_session))
 
@@ -164,8 +165,8 @@ def handle_health_intent(intent, session):
     reprompt_text = None
     try:
         pass
-    except:
-        pass
+    except Exception as e:
+        logit(str(e), 'ERROR')
     return build_response(session_attributes, build_speechlet_response(
         title, speech_output, reprompt_text, should_end_session))
 
@@ -178,7 +179,7 @@ def handle_restart_intent(intent, session):
     reprompt_text = None
     try:
         pass
-    except:
-        pass
+    except Exception as e:
+        logit(str(e), 'ERROR')
     return build_response(session_attributes, build_speechlet_response(
         title, speech_output, reprompt_text, should_end_session))
